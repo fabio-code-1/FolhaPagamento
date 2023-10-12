@@ -1,0 +1,68 @@
+﻿@model FolhaPagamento.Models.Feria
+
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div>
+    <a asp-action="Index" class="btn btn-secondary my-2"> Voltar </a>
+</div>
+
+
+<div class="container">
+    <div class="main d-flex align-items-center justify-content-center">
+        <form asp-action="Create" id="myForm" class="form-control text-start">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="cabecalho d-flex align-items-center justify-content-center">
+                <div class="row">
+                    <div class="col col-auto w-100 text-center">
+                        Logo/Nome
+                    </div>
+                    <div class="col mt-0 text-center">
+                        <h4 class="fw-bold">Cadastro de Ferias</h4>
+                        <h6 class="text-secondary">Atenção ao digitar os dados!</h6>
+                        <p class="text-secondary">Campos que possuem <span class="required">*</span> são obrigatórios!</p>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="row mb-3">
+                <div class="col">
+                    <div class="form-group">
+                        <label asp-for="DataInicio" class="text-start mt-3"></label>
+                        <input asp-for="DataInicio" />
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label asp-for="DataFim" class="text-start mt-3"></label>
+                        <input asp-for="DataFim" />
+                        <span asp-validation-for="DataFim" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label asp-for="Status" class="text-start mt-3"></label>
+                        <input asp-for="Status" readonly value="Pendente" />
+                        <span asp-validation-for="Status" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="d-grid gap-2 mt-3">
+                <input type="submit" value="Criar Pagamento" class="btn btn-primary" />
+            </div>
+        </form>
+
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
