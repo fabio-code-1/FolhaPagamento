@@ -1,0 +1,57 @@
+﻿@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+
+
+<div class="limiter">
+    <div class="container-login100" style="background-image: url('images/bg-login3.jpeg')">
+        <div class="wrap-login100">
+            <form class="login100-form validate-form" method="post" asp-action="Login">
+                <span class="login100-form-logo mt-3 mb-3">
+                    <img src="images/logotelecenter1.png" alt="logo" style="max-width: 100%; height: auto;">
+                </span>
+
+
+                <span class="login100-form-title p-b-34 p-t-27 mb-5">TELECENTER</span>
+
+                
+                <div class="wrap-input100 validate-input">
+                    <input class="input100"
+                           type="text"
+                           name="username"
+                           placeholder="Usuário" />
+                    <span class="focus-input100" data-placeholder="&#xf207;"></span>
+                </div>
+
+                
+                <div class="wrap-input100 validate-input">
+                    <input class="input100"
+                           type="password"
+                           name="pass"
+                           placeholder="Senha" />
+                    <span class="focus-input100" data-placeholder="&#xf191;"></span>
+                </div>
+
+                <div class="contact100-form-checkbox">
+                    <input class="input-checkbox100"
+                           id="ckb1"
+                           type="checkbox"
+                           name="remember-me" />
+                    <label class="label-checkbox100" for="ckb1"> relembra-me </label>
+                </div>
+
+                <div class="container-login100-form-btn">
+                    <button class="login100-form-btn">Entrar</button>
+                </div>
+
+                <div class="text-center p-t-90 my-3">
+                    <a class="txt1" href="#">Esqueceu a senha?</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+

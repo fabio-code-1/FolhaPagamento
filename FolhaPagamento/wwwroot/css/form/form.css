@@ -1,0 +1,87 @@
+﻿
+body {
+    background-color: #F3F3FE;
+}
+
+.logo {
+    width: 160px;
+}
+
+textarea {
+    border-radius: 2%;
+    width: 100%;
+}
+
+.form-control {
+    margin-top: 90px;
+    margin-bottom: 90px;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    text-align: center;
+    width: 800px;
+    height: auto;
+    border: 2px solid #98B7D2;
+    border-radius: 1%;
+}
+
+
+input:not([type="file"]) {
+    border-radius: 5%;
+    border: 1px solid rgb(167, 154, 154) !important;
+    height: 40px;
+    width: 100%;
+}
+
+input:focus,
+textarea:focus {
+    outline: none; /* Remove a borda padrão do foco */
+    border-color: black !important; /* Define a cor da borda quando o input está selecionado */
+    box-shadow: 0 0 7px #C2DBFE; /* Define uma sombra quando o input está selecionado */
+}
+
+
+li {
+    margin-top: 5px;
+    margin-bottom: 5%;
+    list-style-type: none;
+}
+
+form ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+form li {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+form input[type="text"],
+form input[type="email"] {
+    width: 100%;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid gray;
+    font-size: 14px;
+}
+
+
+.required {
+    font-size: larger;
+    color: red;
+}
+
+.error-message {
+    display: none;
+    color: red;
+}
+
+@media only screen and (max-width: 767px) {
+    .form-control {
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+}

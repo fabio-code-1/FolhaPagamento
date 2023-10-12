@@ -1,15 +1,33 @@
+using FolhaPagamento.Models;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// Adicione os serviços ao container.
 builder.Services.AddControllersWithViews();
+
+// Configure o contexto do banco de dados
+builder.Services.AddDbContext<Contexto>(options =>
+    options.UseSqlServer("Data Source=FABIO;Initial Catalog=FolhaPagamento;Integrated Security=True; Encrypt=False"));
+
+builder.Services.AddAuthentication("MyCookieAuthenticationScheme")
+    .AddCookie("MyCookieAuthenticationScheme", options =>
+    {
+        options.LoginPath = "/Account/Login"; // Defina o caminho da página de login
+    });
+
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("RequireLoggedIn", policy => policy.RequireAuthenticatedUser());
+});
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// Configure o pipeline de solicitações HTTP.
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+    // O valor padrão de HSTS é de 30 dias. Você pode querer alterar isso para cenários de produção, consulte https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 
@@ -18,10 +36,11 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
-app.UseAuthorization();
+app.UseAuthentication(); // Middleware de autenticação
+app.UseAuthorization();  // Middleware de autorização
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Account}/{action=Login}/{id?}");
 
 app.Run();

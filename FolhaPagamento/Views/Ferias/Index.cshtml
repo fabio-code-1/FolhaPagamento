@@ -1,0 +1,129 @@
+﻿@model IEnumerable<FolhaPagamento.Models.Feria>
+
+@{
+    ViewData["Title"] = "Painel Funcionario";
+    Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
+}
+<div class="container-fluid pt-4 px-4">
+    <div class="bg-light text-center rounded p-4">
+        <div class="d-flex align-items-center justify-content-between mb-4">
+            <h6 class="mb-0">Solicitação de ferias</h6>
+            <a asp-action="Create">Novo Pedido<i class="bi bi-sun"></i></a>
+        </div>
+        <div class="table-responsive">
+
+            @if (Model.Any())
+            {
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.DataInicio)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.DataFim)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Status)
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.DataInicio)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.DataFim)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Status)
+                                </td>
+                                <td>
+                                    <a asp-action="Details" class="btn btn-sm btn-primary" asp-route-id="@item.Id">Comprovante</a> |
+                                    <a asp-action="Delete" class="btn btn-sm btn-danger" asp-route-id="@item.Id">Cancelar</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+            else
+            {
+                <p>Nenhum pedido realizado!</p>
+            }
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid pt-4 px-4">
+    <div class="row g-4">
+        <div class="col-sm-12 col-md-6 col-xl-4">
+            <div class="h-100 bg-light rounded p-4">
+                <div class="d-flex align-items-center justify-content-between mb-2">
+                    <h6 class="mb-0">Mensagens</h6>
+                </div>
+                <div class="d-flex align-items-center border-bottom py-3">
+                    <img class="rounded-circle flex-shrink-0"
+                         src="~/images/user/testimonial-1.jpg"
+                         alt=""
+                         style="width: 40px; height: 40px" />
+                    <div class="w-100 ms-3">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h6 class="mb-0">Jhon Doe</h6>
+                            <small>15 minutes ago</small>
+                        </div>
+                        <span>Short message goes here...</span>
+                    </div>
+                </div>
+                <div class="d-flex align-items-center pt-3">
+                    <img class="rounded-circle flex-shrink-0"
+                         src="~/images/user/testimonial-2.jpg"
+                         alt=""
+                         style="width: 40px; height: 40px" />
+                    <div class="w-100 ms-3">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h6 class="mb-0">Jhon Doe</h6>
+                            <small>15 minutes ago</small>
+                        </div>
+                        <span>Short message goes here...</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-6 col-xl-4">
+            <div class="h-100 bg-light rounded p-4">
+                <div class="d-flex align-items-center justify-content-between mb-4">
+                    <h6 class="mb-0">Calendario</h6>
+                </div>
+                <div id="calender"></div>
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-md-6 col-xl-4">
+            <div class="h-100 bg-light rounded p-4">
+                <div class="d-flex align-items-center justify-content-between mb-4">
+                    <h6 class="mb-0">Lista de Tarefas</h6>
+                </div>
+                <div class="d-flex mb-2">
+                    <input class="form-control bg-transparent"
+                           type="text"
+                           id="taskInput"
+                           placeholder="Entre com a tarefa"
+                           maxlength="28" />
+                    <button type="button"
+                            class="btn btn-success ms-2"
+                            id="addTask">
+                        <i class="bi bi-clipboard-plus"></i>
+                    </button>
+                </div>
+                <div class="tasks">
+                    <!-- Aqui é onde as tarefas serão exibidas dinamicamente -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

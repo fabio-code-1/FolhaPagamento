@@ -1,0 +1,87 @@
+﻿@model IEnumerable<FolhaPagamento.Models.Pagamento>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
+}
+
+
+
+<h1 class="text-center mt-4">Tabela de pagamentos</h1>
+
+<div class="container-fluid pt-4 px-4">
+    <div class="bg-light text-center rounded p-4">
+        <div class="d-flex align-items-center justify-content-between mb-4">
+            <h6 class="mb-0">Informações Funcionarios</h6>
+             <a asp-action="Create">Cadastrar Pagamento<i class="bi bi-cash"></i></a>
+        </div>
+        <div class="table-responsive">
+            <table id="searchPay" class="table text-start align-middle table-bordered table-hover mb-0">
+                <thead>
+                    <tr class="text-dark">                 
+                        <th scope="col">
+                           @Html.DisplayNameFor(model => model.Usuario)
+                        </th>
+                        <th scope="col">
+                            @Html.DisplayNameFor(model => model.DataPagamento)
+                        </th scope="col">
+                        <th scope="col">
+                            @Html.DisplayNameFor(model => model.ValorTotal)
+                        </th>
+                        <th scope="col">
+                            @Html.DisplayNameFor(model => model.Descontos)
+                        </th>
+                        <th scope="col">
+                              @Html.DisplayNameFor(model => model.Bonus)
+                        </th>
+                        <th scope="col">
+                           @Html.DisplayNameFor(model => model.HorasExtras)
+                        </th>
+                        <th scope="col">
+                           @Html.DisplayNameFor(model => model.ValorLiquido)
+                        </th>
+                        <th scope="col">
+                            @Html.DisplayNameFor(model => model.EstadoPagamento)
+                        </th>
+                        <th scope="col">Acão</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model) {
+                    <tr>
+                            <td>
+                                 @Html.DisplayFor(modelItem => item.Usuario.Nome)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DataPagamento)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ValorTotal)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Descontos)
+                            </td>
+                            <td>
+                               @Html.DisplayFor(modelItem => item.Bonus)
+                            </td>
+                            <td>
+                               @Html.DisplayFor(modelItem => item.HorasExtras)
+                            </td>
+                            <td>
+                              @Html.DisplayFor(modelItem => item.ValorLiquido)
+                            </td>
+                            <td>
+                              @Html.DisplayFor(modelItem => item.EstadoPagamento)
+                            </td>
+                            <td>
+                                <a asp-action="Edit"  class="btn btn-sm btn-warning" asp-route-id="@item.PagamentoID">Editar</a> 
+                                <a asp-action="Details" class="btn btn-sm btn-primary"  asp-route-id="@item.PagamentoID">Holerite</a> 
+                                <a asp-action="Delete"  class="btn btn-sm btn-danger" asp-route-id="@item.PagamentoID">Deletar</a>
+                            </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,62 @@
+﻿@model FolhaPagamento.Models.Pagamento
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1 class="text-center mt-4">Informações do Pagamento</h1>
+
+<h3 class="text-center">Tem certeza de que deseja excluir este pagamento</h3>
+<div class="container text-center">
+    <h4>Funcionario: @Html.DisplayFor(model => model.Usuario.Nome)</h4>
+    <hr />
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <tbody>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.DataPagamento)</th>
+                    <td>@Html.DisplayFor(model => model.DataPagamento)</td>
+                </tr>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.ValorTotal)</th>
+                    <td>@Html.DisplayFor(model => model.ValorTotal)</td>
+                </tr>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.Descontos)</th>
+                    <td>@Html.DisplayFor(model => model.Descontos)</td>
+                </tr>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.Bonus)</th>
+                    <td>@Html.DisplayFor(model => model.Bonus)</td>
+                </tr>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.HorasExtras)</th>
+                    <td>@Html.DisplayFor(model => model.HorasExtras)</td>
+                </tr>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.ValorLiquido)</th>
+                    <td>@Html.DisplayFor(model => model.ValorLiquido)</td>
+                </tr>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.EstadoPagamento)</th>
+                    <td>@Html.DisplayFor(model => model.EstadoPagamento)</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <form asp-action="Delete" method="post">
+                <input type="hidden" asp-for="PagamentoID" />
+                <button type="submit" class="btn btn-danger btn-block">Deletar</button>
+            </form>
+        </div>
+        <div class="col">
+            <a asp-action="Index" class="btn btn-secondary btn-block">Voltar</a>
+        </div>
+    </div>
+</div>
+
+
+

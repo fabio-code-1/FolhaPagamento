@@ -1,0 +1,212 @@
+﻿@model IEnumerable<FolhaPagamento.Models.User>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
+}
+
+<!-- Sale & Revenue Start -->
+<div class="container-fluid pt-4 px-4">
+        <div class="row g-4">
+        <div class="col-sm-6 col-xl-3">
+            <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                <i class="fa fa-chart-line fa-3x text-success"></i>
+                <div class="ms-3">
+                    <p class="mb-2">Total de Pagamentos</p>
+                    <h6 class="mb-0">R$934</h6>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-xl-3">
+            <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                <i class="fa fa-chart-bar fa-3x text-success"></i>
+                <div class="ms-3">
+                    <p class="mb-2">Total Geral</p>
+                    <h6 class="mb-0">R$6234</h6>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-xl-3">
+            <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                <i class="fa fa-chart-area fa-3x text-success"></i>
+                <div class="ms-3">
+                    <p class="mb-2">Férias Ativas</p>
+                    <h6 class="mb-0">34</h6>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-xl-3">
+            <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                <i class="fa fa-chart-pie fa-3x text-success"></i>
+                <div class="ms-3">
+                    <p class="mb-2">Funcionários Pagos</p>
+                    <h6 class="mb-0">123</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Sale & Revenue End -->
+<!-- Sales Chart Start -->
+<div class="container-fluid pt-4 px-4">
+    <div class="row g-4">
+        <div class="col-sm-12 col-xl-6">
+            <div class="bg-light text-center rounded p-4">
+                <div class="d-flex align-items-center justify-content-between mb-4">
+                    <h6 class="mb-0">Contratados</h6>
+                </div>
+                <canvas id="worldwide-sales"></canvas>
+            </div>
+        </div>
+        <div class="col-sm-12 col-xl-6">
+            <div class="bg-light text-center rounded p-4">
+                <div class="d-flex align-items-center justify-content-between mb-4">
+                    <h6 class="mb-0">Faltas e Presencias</h6>
+                </div>
+                <canvas id="salse-revenue"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Sales Chart End -->
+<!-- Recent Sales Start -->
+<div class="container-fluid pt-4 px-4">
+    <div class="bg-light text-center rounded p-4">
+        <div class="d-flex align-items-center justify-content-between mb-4">
+            <h6 class="mb-0">Informações Funcionarios</h6>
+             <a asp-action="Create">Novo Funcionario<i class="bi bi-person-plus-fill"></i></a>
+        </div>
+        <div class="table-responsive">
+            <table id="searchUser" class="table text-start align-middle table-bordered table-hover mb-0">
+                <thead>
+                    <tr class="text-dark">                 
+                        <th scope="col">
+                            @Html.DisplayNameFor(model => model.Cargo)
+                        </th>
+                        <th scope="col">
+                            @Html.DisplayNameFor(model => model.Nome)
+                        </th scope="col">
+                        <th scope="col">
+                            @Html.DisplayNameFor(model => model.Endereco)
+                        </th>
+                        <th scope="col">
+                            @Html.DisplayNameFor(model => model.Telefone)
+                        </th>
+                        <th scope="col">
+                            @Html.DisplayNameFor(model => model.RG)
+                        </th>
+                        <th scope="col">
+                            @Html.DisplayNameFor(model => model.CPF)
+                        </th>
+                        <th scope="col">Ação</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model) {
+                    <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Cargo)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Nome)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Endereco)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Telefone)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.RG)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CPF)
+                            </td>
+                            <td>
+                                <a asp-action="Edit" class="btn btn-sm btn-warning" asp-route-id="@item.Id">Editar</a> |
+                                <a asp-action="Details" class="btn btn-sm btn-primary" asp-route-id="@item.Id">Info</a> |
+                                <a asp-action="Delete" class="btn btn-sm btn-danger" asp-route-id="@item.Id">Deletar</a>
+                            </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<!-- Recent Sales End -->
+<!-- Widgets Start -->
+<div class="container-fluid pt-4 px-4">
+    <div class="row g-4">
+        <div class="col-sm-12 col-md-6 col-xl-4">
+            <div class="h-100 bg-light rounded p-4">
+                <div class="d-flex align-items-center justify-content-between mb-2">
+                    <h6 class="mb-0">Mensagens</h6>
+                </div>
+                <div class="d-flex align-items-center border-bottom py-3">
+                    <img class="rounded-circle flex-shrink-0"
+                         src="~/images/user/testimonial-1.jpg"
+                         alt=""
+                         style="width: 40px; height: 40px" />
+                    <div class="w-100 ms-3">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h6 class="mb-0">Jhon Doe</h6>
+                            <small>15 minutes ago</small>
+                        </div>
+                        <span>Short message goes here...</span>
+                    </div>
+                </div>
+                <div class="d-flex align-items-center pt-3">
+                    <img class="rounded-circle flex-shrink-0"
+                         src="~/images/user/testimonial-2.jpg"
+                         alt=""
+                         style="width: 40px; height: 40px" />
+                    <div class="w-100 ms-3">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h6 class="mb-0">Jhon Doe</h6>
+                            <small>15 minutes ago</small>
+                        </div>
+                        <span>Short message goes here...</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-6 col-xl-4">
+            <div class="h-100 bg-light rounded p-4">
+                <div class="d-flex align-items-center justify-content-between mb-4">
+                    <h6 class="mb-0">Calendario</h6>
+                </div>
+                <div id="calender"></div>
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-md-6 col-xl-4">
+            <div class="h-100 bg-light rounded p-4">
+                <div class="d-flex align-items-center justify-content-between mb-4">
+                    <h6 class="mb-0">Lista de Tarefas</h6>
+                </div>
+                <div class="d-flex mb-2">
+                    <input class="form-control bg-transparent"
+                           type="text"
+                           id="taskInput"
+                           placeholder="Entre com a tarefa"
+                           maxlength="28" />
+                    <button type="button"
+                            class="btn btn-success ms-2"
+                            id="addTask">
+                        <i class="bi bi-clipboard-plus"></i>
+                    </button>
+                </div>
+                <div class="tasks">
+                    <!-- Aqui é onde as tarefas serão exibidas dinamicamente -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Widgets End -->
+
+
+
+
+

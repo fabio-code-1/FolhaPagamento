@@ -1,0 +1,122 @@
+﻿@model FolhaPagamento.Models.Pagamento
+
+@{
+    ViewData["Title"] = "Holerite";
+    DateTime dataAtual = DateTime.Now;
+    string dataFormatada = dataAtual.ToString("dd/MM/yyyy"); 
+}
+
+<div>
+    <a asp-action="Index" class="btn btn-secondary my-2">Voltar</a>
+    <a class="btn btn-primary my-2" id="imprimirBotao">Imprimir/Screenshot</a>
+
+</div>
+
+<table class="table table-success table-striped">
+    <!--Parte 1-->
+    <thead>
+        <tr>
+            <th scope="col">EMPREGADOR</th>
+            <th scope="col"> RECIBO DE PAGAMENTO</th>
+            <th scope="col" colspan="2"> REFERENTE AO MÊS/ANO</th>
+            <th scope="col" colspan="2"> DATA DE PAGAMENTO</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">NOME</th>
+            <td>@Html.DisplayFor(model => model.Usuario!.Nome)</td>
+            <td colspan="2">@dataFormatada</td>
+            <td colspan="2">@Html.DisplayFor(model => model.DataPagamento)</td>
+        </tr>
+        <tr>
+            <th scope="row">ENDEREÇO</th>
+            <td colspan="4">@Html.DisplayFor(model => model.Usuario!.Endereco)</td>
+           
+        </tr>
+        <tr>
+            <th scope="row">CPF</th>
+            <td colspan="4">@Html.DisplayFor(model => model.Usuario!.CPF)</td>
+        </tr>
+    </tbody>
+    <!--Parte 2-->
+    <thead>
+        <tr>
+            <th scope="col">CÓDIGO</th>
+            <th scope="col">CBO</th>
+            <th scope="col" colspan="4">FUNÇÃO</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">@Html.DisplayFor(model => model.Usuario!.Id)</th>
+            <td>-----</td>
+            <td colspan="4">@Html.DisplayFor(model => model.Usuario!.Cargo)</td>
+        </tr>
+    </tbody>
+    <!--Parte 3-->
+    <thead>
+        <tr>
+            <th scope="col">CÓD</th>
+            <th scope="col">DESCRIÇÃO</th>
+            <th scope="col">REFERÊNCIA</th>
+            <th scope="col">PROVENTOS</th>
+            <th scope="col">DESCONTOS</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">001</th>
+            <td>SALARIO BASE</td>
+            <td colspan="3">@Html.DisplayFor(model => model.ValorTotal)</td>
+        </tr>
+        <tr>
+            <th scope="row">400</th>
+            <td>COMISSÃO</td>
+            <td></td>
+            <td colspan="2">@Html.DisplayFor(model => model.Bonus)</td>
+        </tr>
+        <tr>
+            <th scope="row">420</th>
+            <td>REPOUSO REMUNERADO</td>
+            <td></td>
+            <td colspan="2">0,00</td>
+        </tr>
+        <tr>
+            <th scope="row">903</th>
+            <td>INSS</td>
+            <td colspan="2"></td>
+            <td>@Html.DisplayFor(model => model.Descontos)</td>
+        </tr>
+    </tbody>
+    <!--Parte 4-->
+    <thead>
+        <tr>
+            <th scope="col">Total dos Vencimentos</th>
+            <th scope="col">Total Descontos</th>
+            <th scope="col">Horas Extras</th>
+            <th scope="col"></th>
+            <th scope="col">Liquido a Receber</th>
+         
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>0,00</td>
+            <td>@Html.DisplayFor(model => model.Descontos)</td>
+            <td>@Html.DisplayFor(model => model.HorasExtras)</td>
+            <td></td>
+            <td>@Html.DisplayFor(model => model.ValorLiquido)</td>
+            
+        </tr>
+    </tbody>
+</table>
+
+
+
+
+<script>
+    document.getElementById("imprimirBotao").addEventListener("click", function() {
+        window.print();
+    });
+</script>

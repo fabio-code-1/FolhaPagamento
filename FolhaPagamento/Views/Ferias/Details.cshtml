@@ -1,0 +1,40 @@
+﻿@model FolhaPagamento.Models.Feria
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1 class="text-center mt-4">Informações do Funcionario</h1>
+
+<div class="container text-center">
+    <h4>Solicitação de Ferias </h4>
+    <hr />
+
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <tbody>
+                <tr>
+                    <th> @Html.DisplayNameFor(model => model.DataInicio)</th>
+                    <td> @Html.DisplayFor(model => model.DataInicio)</td>
+                </tr>
+                <tr>
+                    <th> @Html.DisplayNameFor(model => model.DataFim)</th>
+                    <td>  @Html.DisplayFor(model => model.DataFim)</td>
+                </tr>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.Status)</th>
+                    <td>@Html.DisplayFor(model => model.Status)</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="row">
+
+        <div class="col">
+            <a asp-action="Index" class="btn btn-secondary btn-block">Voltar</a>
+        </div>
+    </div>
+</div>
+
+
+

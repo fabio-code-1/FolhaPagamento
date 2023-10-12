@@ -1,0 +1,62 @@
+﻿@model FolhaPagamento.Models.User
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1 class="text-center mt-4">Informações do Funcionario</h1>
+
+<div class="container text-center">
+    <h4>Nome: @Html.DisplayFor(model => model.Nome) </h4>
+    <hr />
+
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <tbody>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.Username)</th>
+                    <td>@Html.DisplayFor(model => model.Username)</td>
+                </tr>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.Password)</th>
+                    <td>@Html.DisplayFor(model => model.Password)</td>
+                </tr>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.UserRole)</th>
+                    <td>@Html.DisplayFor(model => model.UserRoleDescription)</td>
+                </tr>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.Cargo)</th>
+                    <td>@Html.DisplayFor(model => model.Cargo)</td>
+                </tr>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.Endereco)</th>
+                    <td>@Html.DisplayFor(model => model.Endereco)</td>
+                </tr>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.Telefone)</th>
+                    <td>@Html.DisplayFor(model => model.Telefone)</td>
+                </tr>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.RG)</th>
+                    <td>@Html.DisplayFor(model => model.RG)</td>
+                </tr>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.CPF)</th>
+                    <td>@Html.DisplayFor(model => model.CPF)</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="row">
+        <div class="col">
+            <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-warning btn-block">Editar</a> 
+        </div>
+        <div class="col">
+            <a asp-action="Index" class="btn btn-secondary btn-block">Voltar</a>
+        </div>
+    </div>
+</div>
+
+
+

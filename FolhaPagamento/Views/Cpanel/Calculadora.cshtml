@@ -1,0 +1,32 @@
+﻿@{
+    ViewData["Title"] = "Calculadora";
+    Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
+}
+
+<h1 class="text-center text-secondary mt-5">Calculadora</h1>
+
+<div class="container mt-5">
+    <div class="calculator">
+        <input type="text" class="form-control" id="display" disabled>
+        <div class="buttons">
+            <button class="btn btn-primary" onclick="clearDisplay()">C</button>
+            <button class="btn btn-secondary" onclick="appendToDisplay('7')">7</button>
+            <button class="btn btn-secondary" onclick="appendToDisplay('8')">8</button>
+            <button class="btn btn-secondary" onclick="appendToDisplay('9')">9</button>
+            <button class="btn btn-info" onclick="appendToDisplay('+')">+</button>
+            <button class="btn btn-secondary" onclick="appendToDisplay('4')">4</button>
+            <button class="btn btn-secondary" onclick="appendToDisplay('5')">5</button>
+            <button class="btn btn-secondary" onclick="appendToDisplay('6')">6</button>
+            <button class="btn btn-info" onclick="appendToDisplay('-')">-</button>
+            <button class="btn btn-secondary" onclick="appendToDisplay('1')">1</button>
+            <button class="btn btn-secondary" onclick="appendToDisplay('2')">2</button>
+            <button class="btn btn-secondary" onclick="appendToDisplay('3')">3</button>
+            <button class="btn btn-info" onclick="appendToDisplay('*')">*</button>
+            <button class="btn btn-secondary" onclick="appendToDisplay('0')">0</button>
+            <button class="btn btn-secondary" onclick="appendToDisplay('.')">.</button>
+            <button class="btn btn-success" onclick="calculate()">=</button>
+            <button class="btn btn-info" onclick="appendToDisplay('/')">/</button>
+        </div>
+    </div>
+</div>
+

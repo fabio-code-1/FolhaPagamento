@@ -1,0 +1,122 @@
+﻿@model FolhaPagamento.Models.Pagamento
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div>
+    <a asp-action="Index" class="btn btn-secondary my-2">Voltar</a>
+</div>
+
+
+<!--Form-->
+<div class="container">
+    <div class="main d-flex align-items-center justify-content-center">
+        <form asp-action="Edit" id="myForm" class="form-control text-start">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="PagamentoID" />
+            <div class="cabecalho d-flex align-items-center justify-content-center">
+                <div class="row">
+                    <div class="col col-auto w-100 text-center">
+                        Logo/Nome
+                    </div>
+                    <div class="col mt-0 text-center">
+                        <h4 class="fw-bold">Edição de Pagamento</h4>
+                        <h6 class="text-secondary">Atenção ao digitar os dados!</h6>
+                        <p class="text-secondary">Campos que possuem <span class="required">*</span> são obrigatórios!</p>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="row mb-3">
+                <div class="col">
+                    <div class="form-group">
+                        <label asp-for="UsuarioID" class="text-start mt-3">Funcionario <span class="required">*</span></label><br />
+                        <select asp-for="UsuarioID" asp-items="ViewBag.UsuarioID"></select>
+                        <span asp-validation-for="UsuarioID" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label asp-for="DataPagamento" class="text-start mt-3">Data Pagamento <span class="required">*</span></label>
+                        <input asp-for="DataPagamento" />
+                        <span asp-validation-for="DataPagamento" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label asp-for="ValorTotal" class="text-start mt-3"> Valor Total <span class="required">*</span></label>
+                        <input asp-for="ValorTotal" />
+                        <span asp-validation-for="ValorTotal" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label asp-for="Descontos" class="text-start mt-3">Descontos <span class="required">*</span></label>
+                        <input asp-for="Descontos" />
+                        <span asp-validation-for="Descontos"></span>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label asp-for="Bonus" class="text-start mt-3">Bonus <span class="required">*</span></label>
+                        <input asp-for="Bonus" />
+                        <span asp-validation-for="Bonus" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label asp-for="HorasExtras" class="text-start mt-3">Horas Extras <span class="required">*</span></label>
+                        <input asp-for="HorasExtras" />
+                        <span asp-validation-for="HorasExtras" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label asp-for="ValorLiquido" class="text-start mt-3">Valor Liquido <span class="required">*</span></label>
+                        <input asp-for="ValorLiquido" />
+                        <span asp-validation-for="ValorLiquido" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label asp-for="EstadoPagamento" class="text-start mt-3">Estado do Pagamento <span class="required">*</span></label>
+                        <input asp-for="EstadoPagamento" />
+                        <span asp-validation-for="EstadoPagamento" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Botao enviar -->
+            <div class="d-grid gap-2 mt-3">
+                <input type="submit" value="Editar Pagamento" class="btn btn-warning" />
+            </div>
+        </form>
+
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

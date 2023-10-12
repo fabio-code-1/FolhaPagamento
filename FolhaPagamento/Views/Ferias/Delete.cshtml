@@ -1,0 +1,44 @@
+﻿@model FolhaPagamento.Models.Feria
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1 class="text-center mt-4">Cancelar Pedido</h1>
+
+<h3 class="text-center">Tem certeza de que deseja excluir este pedido</h3>
+<div class="container text-center">
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <tbody>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.DataInicio)</th>
+                    <td>@Html.DisplayFor(model => model.DataInicio)</td>
+                </tr>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.DataFim)</th>
+                    <td>@Html.DisplayFor(model => model.DataFim)</td>
+                </tr>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.Status)</th>
+                    <td>@Html.DisplayFor(model => model.Status)</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <form asp-action="Delete" method="post">
+                <input type="hidden" asp-for="Id" />
+                <button type="submit" class="btn btn-danger btn-block">Deletar</button>
+            </form>
+        </div>
+        <div class="col">
+            <a asp-action="Index" class="btn btn-secondary btn-block">Voltar</a>
+        </div>
+    </div>
+</div>
+
+
+
